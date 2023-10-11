@@ -9,6 +9,7 @@ import Profile from "./views/profile/profile";
 import Store from "./views/store/store";
 import Us from "./views/us/us";
 import Error from "./views/error/error";
+import Form from "./views/FormProduct/Form"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/store" element={<Store/>}/>
                 <Route path="/us" element={<Us/>}/>
                 <Route path="*" element={<Error />} />
+                <Route path="/form" element={<Form/>}/>
             </Routes>
         </>
     </Router>
