@@ -13,6 +13,7 @@ export default function Us() {
                 <GralButton linkTo="/product" label="Product"/>
                 <GralButton linkTo="/profile" label="Profile"/>
                 <GralButton linkTo="/store" label="Store"/>
+                <GralButton linkTo="/cart" label="Cart"/>
             </>
         </div>
     )

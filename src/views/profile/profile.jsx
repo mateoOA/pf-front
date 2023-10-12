@@ -13,6 +13,7 @@ export default function Profile() {
                 <GralButton linkTo="/product" label="Product"/>
                 <GralButton linkTo="/store" label="Store"/>
                 <GralButton linkTo="/us" label="Us"/>
+                <GralButton linkTo="/cart" label="Cart"/>
             </>
         </div>
     )

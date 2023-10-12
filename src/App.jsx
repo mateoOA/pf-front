@@ -9,6 +9,7 @@ import Profile from "./views/profile/profile";
 import Store from "./views/store/store";
 import Us from "./views/us/us";
 import Error from "./views/error/error";
+import Cart from "./views/cart/cart";
 
 function App() {
   return (
@@ -17,11 +18,12 @@ function App() {
             <Routes>            
                 <Route path="/" element={<Landing/>}/>
                 <Route path="/home" element={<Home/>}/>
-                <Route path="/product" element={<Product/>}/>
+                <Route path="/product/:id" element={<Product/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/store" element={<Store/>}/>
                 <Route path="/us" element={<Us/>}/>
                 <Route path="*" element={<Error />} />
+                <Route path="/cart" element={<Cart/>}/>
             </Routes>
         </>
     </Router>

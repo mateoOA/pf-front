@@ -13,6 +13,7 @@ export default function Home() {
                 <GralButton linkTo="/profile" label="Profile"/>
                 <GralButton linkTo="/store" label="Store"/>
                 <GralButton linkTo="/us" label="Us"/>
+                <GralButton linkTo="/cart" label="Cart"/>
             </>
         </>
     );

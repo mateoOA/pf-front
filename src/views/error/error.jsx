@@ -17,6 +17,7 @@ export default function Error() {
                 <GralButton linkTo="/profile" label="Profile"/>
                 <GralButton linkTo="/store" label="Store"/>
                 <GralButton linkTo="/us" label="Us"/>
+                <GralButton linkTo="/cart" label="Cart"/>
             </>
         </>
     );
