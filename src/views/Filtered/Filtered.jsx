@@ -23,7 +23,7 @@ export default function Filtered() {
   };
 
   return (
-    <div>
+    <div class="flex flex-row">
       <div>
         <h3>Alphabetic</h3>
         <select name="A_Z" onChange={handleAoZ} defaultValue="Default">

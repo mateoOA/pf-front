@@ -1,5 +1,6 @@
 import GralButton from '../../components/button/button';
 import NavBar from "../../components/navBar/navBar";
+import Filtered from '../Filtered/Filtered';
 
 export default function Landing() {
     return (
@@ -14,6 +15,7 @@ export default function Landing() {
                 <GralButton linkTo="/store" label="Store"/>
                 <GralButton linkTo="/us" label="Us"/>
             </>
+            <Filtered/>
         </div>
     )
 }
