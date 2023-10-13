@@ -3,8 +3,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Carlitos S.A.', href: '/', current: true },
-  { name: 'Home', href: '/home', current: false },
+  { name: 'Carlitos S.A.', href: '/home', current: true },
+  { name: 'Home', href: '/', current: false },
   { name: 'Store', href: '/store', current: false },
   { name: 'Us', href: '/us', current: false },
 ]

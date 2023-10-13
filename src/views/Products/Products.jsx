@@ -1,8 +1,8 @@
 
-export default function Profile() {
+export default function Products() {
     return (
         <div>
-             
+            
         </div>
     )
 }
