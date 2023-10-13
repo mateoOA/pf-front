@@ -1,7 +1,7 @@
 import {Route, Routes, useLocation} from "react-router-dom"  
 
 import './App.css'
-import Landing from "./views/Landing/Landing";
+/* import Landing from "./views/Landing/Landing"; */
 import Home from "./views/home/home";
 import Product from "./views/Products/Products";
 import Detail from "./views/Detail/Detail";
@@ -17,7 +17,7 @@ function App() {
     <>
     {pathname !== "/" && <NavBar/>}
             <Routes>
-                <Route path="/" element={<Landing/>}/>
+                {/* <Route path="/" element={<Landing/>}/> */}
                 <Route path="/home" element={<Home/>}/>
                 <Route path="/products" element={<Product/>}/>
                 <Route path='/Detail/:id' element={<Detail/>}/>
