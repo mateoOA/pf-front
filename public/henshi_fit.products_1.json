@@ -1,0 +1,221 @@
+[{
+  "_id": {
+    "$oid": "6526fce557cef164e3b06465"
+  },
+  "title": "Organic Quinoa",
+  "price": 5.99,
+  "category": "food",
+  "stock": 25,
+  "diet": "Vegan",
+  "flavor": "Mixed",
+  "weight": {
+    "value": 250,
+    "type": "g"
+  },
+  "isActive": false,
+  "sold": 0,
+  "image": "https://firebasestorage.googleapis.com/v0/b/jenshygym.appspot.com/o/files%2F79404062539806.webp?alt=media&token=d57fd903-aa9a-429a-a85d-e97840fc14c6"
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b06466"
+  },
+  "title": "Green Tea Extract",
+  "price": 6.49,
+  "category": "food",
+  "stock": 30,
+  "diet": "Vegetarian",
+  "flavor": "Green Tea",
+  "weight": {
+    "value": 100,
+    "type": "g"
+  },
+  "isActive": true,
+  "sold": 0,
+  "image": "https://firebasestorage.googleapis.com/v0/b/jenshygym.appspot.com/o/files%2F73.avif?alt=media&token=6da4154d-5b24-4a01-9483-135dd3a59015"
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b06467"
+  },
+  "title": "Vitamin C Capsules",
+  "price": 7.99,
+  "category": "food",
+  "stock": 40,
+  "diet": "Vegan",
+  "flavor": "None",
+  "weight": {
+    "value": 60,
+    "type": "g"
+  },
+  "isActive": true,
+  "sold": 0,
+  "image": "https://firebasestorage.googleapis.com/v0/b/jenshygym.appspot.com/o/files%2FD_NQ_NP_2X_624930-MLA46635716749_072021-F.webp?alt=media&token=931c1edd-2055-4af7-96e2-bbc166dc3b7a"
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b06468"
+  },
+  "title": "Protein Powder",
+  "price": 8.79,
+  "category": "food",
+  "stock": 15,
+  "diet": "Vegetarian",
+  "flavor": "Vanilla",
+  "weight": {
+    "value": 500,
+    "type": "g"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b06469"
+  },
+  "title": "Chia Seeds",
+  "price": 7.29,
+  "category": "food",
+  "stock": 60,
+  "diet": "Vegan",
+  "flavor": "None",
+  "weight": {
+    "value": 350,
+    "type": "g"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b0646a"
+  },
+  "title": "Omega-3 Fish Oil",
+  "price": 5.99,
+  "category": "food",
+  "stock": 45,
+  "diet": "Vegetarian",
+  "flavor": "Fish",
+  "weight": {
+    "value": 150,
+    "type": "ml"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b0646b"
+  },
+  "title": "Probiotic Yogurt",
+  "price": 6.49,
+  "category": "food",
+  "stock": 38,
+  "diet": "Vegan",
+  "flavor": "Yogurt",
+  "weight": {
+    "value": 200,
+    "type": "g"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b0646c"
+  },
+  "title": "Whey Protein Shake",
+  "price": 7.99,
+  "category": "food",
+  "stock": 20,
+  "diet": "Vegetarian",
+  "flavor": "Chocolate",
+  "weight": {
+    "value": 250,
+    "type": "g"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b0646d"
+  },
+  "title": "Almond Butter",
+  "price": 8.79,
+  "category": "food",
+  "stock": 42,
+  "diet": "Vegan",
+  "flavor": "Almond",
+  "weight": {
+    "value": 200,
+    "type": "g"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b0646e"
+  },
+  "title": "Green Superfood Powder",
+  "price": 7.29,
+  "category": "food",
+  "stock": 55,
+  "diet": "Vegetarian",
+  "flavor": "Mixed",
+  "weight": {
+    "value": 300,
+    "type": "g"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b0646f"
+  },
+  "title": "Coconut Oil",
+  "price": 6.99,
+  "category": "beverages",
+  "stock": 70,
+  "diet": "Vegan",
+  "flavor": "Coconut",
+  "weight": {
+    "value": 500,
+    "type": "ml"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "6526fce557cef164e3b06470"
+  },
+  "title": "Cold Brew Coffee",
+  "price": 5.49,
+  "category": "beverages",
+  "stock": 65,
+  "diet": "Vegetarian",
+  "flavor": "Coffee",
+  "weight": {
+    "value": 750,
+    "type": "ml"
+  },
+  "isActive": true,
+  "sold": 0
+},
+{
+  "_id": {
+    "$oid": "65271060e05dda4caa5d83f2"
+  },
+  "title": "Organic Bread",
+  "price": 5.99,
+  "category": "food",
+  "stock": 25,
+  "sold": 0,
+  "diet": "Vegan",
+  "flavor": "Mixed",
+  "isActive": true,
+  "__v": 0
+}]
