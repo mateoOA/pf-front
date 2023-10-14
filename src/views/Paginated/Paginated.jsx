@@ -58,7 +58,7 @@ export default function Paginated({
 /* Luego en Cards
 const { products } = useSelector((state) => state);
 const [currentPage, setCurrentPage] = useState(1);
-const [currentCharacters, setCurrentCharacters] = useState([]);
+const [currentProducts, setCurrentProducts] = useState([]);
 const indexOFLastCharacter = currentPage * charactersPerPage;
 const indexOfFirstCharactetr = indexOFLastCharacter - charactersPerPage;
 const charactersPerPage = 8;
