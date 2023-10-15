@@ -2,9 +2,6 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-<<<<<<< Updated upstream
-    extend: {},
-=======
     extend: {
       colors: {
         darkorange: "#ff9505",
@@ -27,7 +24,6 @@ module.exports = {
       "51xl": "70px",
       inherit: "inherit",
     },
->>>>>>> Stashed changes
   },
   corePlugins: {
     preflight: false,
