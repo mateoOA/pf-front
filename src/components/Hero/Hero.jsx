@@ -1,6 +1,5 @@
 // import { Carousel } from "../Carousel/Carousel";
 import Home from "../../assets/Home1.png"
-import Header from "../Header/Header"
 import vit from "../../assets/Vitamina.png"
 import prote from "../../assets/Proteina.png"
 import cel from "../../assets/App.png"

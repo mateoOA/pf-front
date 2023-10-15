@@ -1,4 +1,3 @@
-import "./cardStyle.css";
 export function Card({ image, title, category, price, id }) {
   return (
     <span className="group w-[391px] h-[673px]">
