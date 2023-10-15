@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  detail: {},
-  productByName: {},
   products: [],
+  detail: {},
+  productByName: [],
+  productsFiltered: [],
 };
 export const productSlice = createSlice({
   name: "products",
   initialState: initialState,
-
   reducers: {
     getAllProducts: (state = initialState, action) => {
-      state.products = action.payload;
+      state.products = [...state.products, ...action.payload];
     },
     getProductByName: (state, action) => {
       state.productByName = action.payload;
@@ -18,11 +18,18 @@ export const productSlice = createSlice({
     getProductById: (state, action) => {
       state.detail = action.payload;
     },
+    getProductsByFilter: (state, action) => {
+      state.productsFiltered = [...state.products, ...action.payload];
+    },
   },
 });
 
-export const { getAllProducts, getProductByName, getProductById } =
-  productSlice.actions;
+export const {
+  getAllProducts,
+  getProductByName,
+  getProductById,
+  getProductsByFilter,
+} = productSlice.actions;
 
 const productsReducer = productSlice.reducer;
 export default productsReducer;

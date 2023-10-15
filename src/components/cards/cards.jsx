@@ -9,13 +9,13 @@ export function Cards() {
     dispatch(getProducts());
   });
   const { products } = useSelector((state) => state.products);
-  console.log("holaa");
+
   return (
     <div className="flex flex-wrap">
       {products.map((product) => (
         <Card
           key={product._id.$oid}
-          image={product.image}
+          image={product.image ?? null}
           title={product.title}
           category={product.category}
           price={product.price}

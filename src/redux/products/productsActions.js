@@ -1,24 +1,59 @@
 import axios from "axios";
+
 import {
   getAllProducts,
   getProductByName,
   getProductById,
+  getProductsByFilter
 } from "./productSlice.js";
 
-export const getProducts = (dispatch) => {
-  axios(
-    "https://pf-ab.onrender.com/products?weightMin=100&category=food&weightType=g&weightMax=400&orderBy=-price"
-  )
-    .then((res) => dispatch(getAllProducts(res.data.results)))
-    .catch((e) => console.log(e));
+
+
+
+export const getProducts = () => {
+  return (dispatch) => {
+    axios
+      .get("http://localhost:3001/products/")
+      .then((res) => {
+        dispatch(getAllProducts(res.data.products));
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
+  };
 };
-export const getProductName = (dispatch) => {
-  axios("http://localhost:3000/products")
-    .then((res) => dispatch(getProductByName(res.data.results)))
-    .catch((e) => console.log(e));
+
+export const getProductName = (name) => {
+  return (dispatch) => {
+    axios
+      .get(`http://localhost:3001/products/name?name=${name}`)
+      .then((res) => {
+        dispatch(getProductByName(res.data));
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
+  };
 };
-export const getProductId = (dispatch) => {
-  axios("http://localhost:3000/products")
-    .then((res) => dispatch(getProductById(res.data.results)))
-    .catch((e) => console.log(e));
+
+export const getProductId = (id) => {
+  return (dispatch) => {
+    axios
+      .get(`http://localhost:3001/products/${id}`)
+      .then((res) => {
+        dispatch(getProductById(res.data));
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
+  };}
+
+  
+export const getProductFiltered = (diet, category, weigthType, weigthMin, weigthMax) => {
+    return (dispatch) => {
+      axios
+        .get(`http://localhost:3001/products/?diet=${diet}&category=${category}&weigthType=${weigthType}&weigthMin=${weigthMin}&weightMax=${weigthMax}`)
+        .then((res) => {
+          dispatch(getProductsByFilter(res.data));
+          console.log(res.data);
+        })
+        .catch((e) => console.log(e));
+    };
 };
