@@ -30,7 +30,7 @@ export default function Header() {
       <p className="absolute top-[463px] left-[137px] text-5xl leading-[32px] font-impact text-darkorange">
         SELLERS
       </p>
-      <NavLink to="/home" className="absolute rounded-xl top-[589px] left-[206px] leading-[32px] font-impact text-gray">
+      <NavLink to="/home" className="absolute rounded-xl top-[589px] left-[206px] leading-[32px] font-impact text-gray hover:text-darkorange">
         shop now
       </NavLink>
       <p className="absolute top-[31px] left-[1297px] text-3xl leading-[32px] flex items-center w-44 h-[39px] text-grey">
