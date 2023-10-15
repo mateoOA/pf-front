@@ -38,6 +38,7 @@ function App() {
                 <Route path="/cart" element={<Cart/>}/>
 >>>>>>> Stashed changes
             </Routes>
+
     </>
   )
 }
