@@ -13,7 +13,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NavBar() {
+export default function NavBar () {
   const { pathname } = useLocation();
 
 /*   useEffect(() => {
@@ -69,25 +69,25 @@ export default function NavBar() {
                               Home
                             </NavLink>
                           )}
-                          {pathname !== "/" && (
+                          {pathname !== "/Products" && (
                             <NavLink
-                              to="/Products"
+                              to="/products"
                               className=" text-white hover:text-darkorange"
                             >
-                              Productos
+                              Products
                             </NavLink>
                           )}
                           {pathname !== "/" && (
                             <NavLink
-                              to="/Aboutus"
+                              to="/aboutus"
                               className=" text-white hover:text-darkorange"
                             >
                               About Us
                             </NavLink>
                           )}
-                          {pathname !== "/" && (
+                          {pathname !== "/Myaccount" && (
                             <NavLink
-                              to="/Myaccount"
+                              to="/myaccount"
                               className=" space-x-96  text-white hover:text-darkorange"
                             >
                               My acount

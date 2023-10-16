@@ -19,12 +19,12 @@ export default function Hero() {
             <div className=" ml-[60px] mb-[40px] bg-[#1e1e1e] w-[540px] h-[600px]">
                 <img src={vit} alt="" className="mt-[100px] w-[350px] h-[350px]"/>
                 <p className=" font-impact text-30xl text-white mb-[0px]">VITAMINS</p>
-                <NavLink to="/Products" className=" font-impact  leading-[32px] text-darkorange hover:text-crimson">SHOP NOW</NavLink>
+                <NavLink to="/products" className=" font-impact  leading-[32px] text-darkorange hover:text-crimson">SHOP NOW</NavLink>
             </div>
             <div className="ml-[60px] mb-[40px] bg-[#1e1e1e] w-[540px] h-[600px]">
                 <img src={prote} alt="" className="mt-[100px] w-[350px] h-[350px]"/><br/>
                 <p className=" font-impact text-30xl text-white mb-[0px]">SUPPLEMETS</p>
-                <NavLink to="/Products" className=" font-impact  leading-[32px] text-darkorange hover:text-crimson">SHOP NOW</NavLink>
+                <NavLink to="/products" className=" font-impact  leading-[32px] text-darkorange hover:text-crimson">SHOP NOW</NavLink>
             </div>
             </section>
         </div>
