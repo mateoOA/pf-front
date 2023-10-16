@@ -1,7 +1,15 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import vue from '@vitejs/plugin-vue'
+import dotenv from 'dotenv'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+export default ({ mode }) => {
+  const env = dotenv.config({ path: `./.env.${mode}` }).parsed
+
+  return {
+    plugins: [vue()],
+    define: {
+      ...env
+    }
+  }
+}
+
