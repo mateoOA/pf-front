@@ -81,7 +81,7 @@ export default function Filtered() {
           onChange={handleWeightType}
           defaultValue="Default"
         >
-          <option value="Default">Select Category</option>
+          <option value="Default">Select a Weight Type</option>
           <option value="l">l</option>
           <option value="ml">ml</option>
           <option value="g">g</option>
@@ -109,6 +109,8 @@ export default function Filtered() {
       <button onClick={handleReset}> Reset</button>
     </div>
   );
+
 }
+
 
 

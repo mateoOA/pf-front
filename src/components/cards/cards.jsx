@@ -12,7 +12,7 @@ export function Cards() {
   const { products } = useSelector((state) => state.products);
 
   return (
-    <div className="flex flex-wrap">
+    <div >
       {products.map((product) => (
         <Card
           key={product._id}

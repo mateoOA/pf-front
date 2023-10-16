@@ -15,7 +15,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -39,13 +39,8 @@ a:hover {
 body {
   background-color: #121212;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  max-width: 100%;
   min-height: 100vh;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
 }
 
 h1 {
