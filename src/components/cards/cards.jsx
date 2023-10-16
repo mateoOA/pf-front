@@ -8,14 +8,15 @@ export function Cards() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
-  });
+  }, []);
   const { products } = useSelector((state) => state.products);
 
   return (
-    <div className="flex flex-wrap">
+    <div >
       {products.map((product) => (
         <Card
-          key={product._id.$oid}
+          key={product._id}
+          id={product._id}
           image={product.image ?? null}
           title={product.title}
           category={product.category}

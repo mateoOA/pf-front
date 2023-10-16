@@ -4,11 +4,8 @@ import {
   getAllProducts,
   getProductByName,
   getProductById,
-  getProductsByFilter
+  getProductsByFilter,
 } from "./productSlice.js";
-
-
-
 
 export const getProducts = () => {
   return (dispatch) => {
@@ -43,17 +40,27 @@ export const getProductId = (id) => {
         console.log(res.data);
       })
       .catch((e) => console.log(e));
-  };}
+  };
+};
 
-  
-export const getProductFiltered = (diet, category, weigthType, weigthMin, weigthMax) => {
-    return (dispatch) => {
-      axios
-        .get(`http://localhost:3001/products/?diet=${diet}&category=${category}&weigthType=${weigthType}&weigthMin=${weigthMin}&weightMax=${weigthMax}`)
-        .then((res) => {
-          dispatch(getProductsByFilter(res.data));
-          console.log(res.data);
-        })
-        .catch((e) => console.log(e));
-    };
+
+
+export const getProductFiltered = (
+  diet,
+  category,
+  weigthType,
+  weigthMin,
+  weigthMax
+) => {
+  return (dispatch) => {
+    axios
+      .get(
+        `http://localhost:3001/products/?diet=${diet}&category=${category}&weigthType=${weigthType}&weigthMin=${weigthMin}&weightMax=${weigthMax}`
+      )
+      .then((res) => {
+        dispatch(getProductsByFilter(res.data));
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
+  };
 };

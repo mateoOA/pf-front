@@ -1,8 +1,11 @@
 
 export default function Cart() {
-    return (
-        <div>
+
+  return (
+        <>
             
-        </div>
-    )
+        </>
+    );
 }
+
+
