@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
-  detail: {},
-  productByName: [],
-  productsFiltered: [],
+  detail: [],
 };
 export const productSlice = createSlice({
   name: "products",
@@ -13,13 +11,13 @@ export const productSlice = createSlice({
       state.products = [...state.products, ...action.payload];
     },
     getProductByName: (state, action) => {
-      state.productByName = action.payload;
+      state.products = [...action.payload];
     },
-    getProductById: (state, action) => {
-      state.detail = action.payload;
+    getProductById: (state = initialState, action) => {
+      state.detail = [...action.payload];
     },
     getProductsByFilter: (state, action) => {
-      state.productsFiltered = [...state.products, ...action.payload];
+      state.products = [...action.payload];
     },
   },
 });

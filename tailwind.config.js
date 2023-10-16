@@ -1,14 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
+  content: ["./src/*/.{js,jsx,ts,tsx}"],
   theme: {
-    colors: {
-      // Configure your color palette here
-      'common-violet':'#7F56D9',
-      'card-color':'#f2f2f2'
+    extend: {
+      colors: {
+        darkorange: "#ff9505",
+        white: "#fafdfe",
+        gray: "#f9fdfe",
+        black: "#121212",
+        crimson: "#e93b45",
+      },
+      spacing: {},
+      fontFamily: {
+        impact: "Impact",
+        bayon: "Bayon",
+      },
     },
-    extend: {},
+    fontSize: {
+      "10xl": "25px",
+      "30xl": "30px",
+      "31xl": "50px",
+      "21xl": "40px",
+      "51xl": "70px",
+      inherit: "inherit",
+    },
   },
-  plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
 };
-
