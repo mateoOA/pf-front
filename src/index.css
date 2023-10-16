@@ -39,11 +39,8 @@ a:hover {
 body {
   background-color: #121212;
   margin: 0;
-  display: flex;
-  place-items: center;
   max-width: 100%;
   min-height: 100vh;
-
 }
 
 h1 {
