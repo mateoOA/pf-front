@@ -17,7 +17,7 @@ export const productSlice = createSlice({
       state.detail = [...action.payload];
     },
     getProductsByFilter: (state, action) => {
-      state.products = [...action.payload];
+      state.products = action.payload;
     },
   },
 });

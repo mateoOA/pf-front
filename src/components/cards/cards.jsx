@@ -13,7 +13,7 @@ export function Cards() {
 
   return (
     <div >
-      {products.map((product) => (
+      {products.map((product) => ( 
         <Card
           key={product._id}
           id={product._id}

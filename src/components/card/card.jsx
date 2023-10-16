@@ -5,7 +5,7 @@ export function Card({ image, title, category, price, id }) {
   
   return (
     <span className="group w-[391px] h-[673px]">
-      <a href={`/product/${id}`} className=" bg-card-color">
+      <span href={`/product/${id}`} className=" bg-card-color">
         <NavLink to={`/Detail/${id}`}>
           <img
             src={image}
@@ -14,7 +14,7 @@ export function Card({ image, title, category, price, id }) {
             alt="Product Image"
           />
         </NavLink>
-      </a>
+      </span>
       <NavLink to={`/Detail/${id}`}>
         <span>
           <span>{title}</span>

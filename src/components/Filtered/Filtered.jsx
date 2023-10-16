@@ -1,31 +1,31 @@
 import { useDispatch } from "react-redux";
-import { getProductFiltered } from "../../redux/products/productsActions";
+import { getProducts } from "../../redux/products/productsActions";
 export default function Filtered() {
   const dispatch = useDispatch();
 
   const handleAoZ = (event) => {
-    dispatch(getProductFiltered(event.target.value));
+    dispatch(getProducts(event.target.value));
   };
 
   const handleOrderPrice = (event) => {
-    dispatch(getProductFiltered(event.target.value));
+    dispatch(getProducts(event.target.value));
   };
 
   const handleFilterDiet = (event) => {
-    dispatch(getProductFiltered(event.target.value));
+    dispatch(getProducts(event.target.value));
   };
 
   const handleFilterCategory = (event) => {
-    dispatch(getProductFiltered(event.target.value));
+    dispatch(getProducts(event.target.value));
   };
   const handleWeightType = (event) => {
-    dispatch(getProductFiltered(event.target.value));
+    dispatch(getProducts(event.target.value));
   };
   const handleWeightMax = (event) => {
-    dispatch(getProductFiltered(event.target.value));
+    dispatch(getProducts(event.target.value));
   };
   const handleWeightMin = (event) => {
-    dispatch(getProductFiltered(event.target.value));
+    dispatch(getProducts(event.target.value));
   };
 
   const handleReset = () => {
