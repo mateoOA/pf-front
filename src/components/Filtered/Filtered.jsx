@@ -18,6 +18,15 @@ export default function Filtered() {
   const handleFilterCategory = (event) => {
     dispatch(getProductFiltered(event.target.value));
   };
+  const handleWeightType = (event) => {
+    dispatch(getProductFiltered(event.target.value));
+  };
+  const handleWeightMax = (event) => {
+    dispatch(getProductFiltered(event.target.value));
+  };
+  const handleWeightMin = (event) => {
+    dispatch(getProductFiltered(event.target.value));
+  };
 
   const handleReset = () => {
     dispatch(reset());
@@ -51,8 +60,8 @@ export default function Filtered() {
           defaultValue="Default"
         >
           <option value="Default">Select Category</option>
-          <option value="vegetarian">Food</option>
-          <option value="vegan">Beverages</option>
+          <option value="Food">Food</option>
+          <option value="Beverages">Beverages</option>
         </select>
       </div>
 
@@ -64,7 +73,42 @@ export default function Filtered() {
           <option value="vegan">Vegan</option>
         </select>
       </div>
+
+      <div>
+        <h3>weightType</h3>
+        <select
+          name="weightType"
+          onChange={handleWeightType}
+          defaultValue="Default"
+        >
+          <option value="Default">Select Category</option>
+          <option value="l">l</option>
+          <option value="ml">ml</option>
+          <option value="g">g</option>
+          <option value="kg">kg</option>
+        </select>
+      </div>
+
+      <div>
+        <h3>min-max size</h3>
+        <input
+          name="weightMin"
+          onChange={handleWeightMin}
+          id="weightMix"
+          type="number"
+          placeholder="Minimum"
+        />
+        <input
+          name="weightMax"
+          onChange={handleWeightMax}
+          id="weightMax"
+          type="number"
+          placeholder="maximum"
+        />
+      </div>
       <button onClick={handleReset}> Reset</button>
     </div>
   );
 }
+
+
