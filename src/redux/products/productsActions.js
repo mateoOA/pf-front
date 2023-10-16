@@ -43,19 +43,19 @@ export const getProductId = (id) => {
   };
 };
 
-
-
 export const getProductFiltered = (
   diet,
   category,
   weigthType,
   weigthMin,
-  weigthMax
+  weigthMax,
+  limit,
+  page
 ) => {
   return (dispatch) => {
     axios
       .get(
-        `http://localhost:3001/products/?diet=${diet}&category=${category}&weigthType=${weigthType}&weigthMin=${weigthMin}&weightMax=${weigthMax}`
+        `http://localhost:3001/products/?diet=${diet}&category=${category}&weigthType=${weigthType}&weigthMin=${weigthMin}&weightMax=${weigthMax}&limit=${limit}&page=${page}`
       )
       .then((res) => {
         dispatch(getProductsByFilter(res.data));
