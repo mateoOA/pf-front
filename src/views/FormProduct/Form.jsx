@@ -1,5 +1,8 @@
 import {useForm} from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../redux/actions';
+
 import './Form.css'
 export default function Form(){
    const {register, handleSubmit,
@@ -7,10 +10,15 @@ export default function Form(){
     
 } = useForm()
 
-    const onSubmit = handleSubmit((data)=>{
-        console.log(data)
-        alert('send')
-    })
+const dispatch = useDispatch();
+
+
+const onSubmit = handleSubmit((data) => {
+    dispatch(addProduct(data));
+    console.log(data);
+    alert('send');
+  });
+  
 
 
     return(
@@ -65,20 +73,21 @@ export default function Form(){
                     })} ></input>
                     {errors.price && <span>{errors.price.message}</span>}
                 </div>
-                    <div  >
-                        <label>Category</label>
-                        <input type="text" onInput={(e) => e.target.value = e.target.value.replace(/\s/g, '')} {...register('category',{
-                              required:{
-                                value:true,
-                                message: 'required'
-                            },
-                            pattern:{
-                                value:/^[^\d]*$/,
-                                message:'the field not accepts numbers'
-                            }
-                        })}></input>
-                        {errors.category && <span>{errors.category.message}</span>}  
-                    </div>
+                <div>
+  <label>Category</label>
+  <select {...register('category', {
+    required: {
+      value: true,
+      message: 'Please select a category'
+    }
+  })} defaultValue="food">
+    <option value="food">Food</option>
+    <option value="suplement">Suplement</option>
+    <option value="drink">Drink</option>
+  </select>
+  {errors.category && <span>{errors.category.message}</span>}
+</div>
+
                     
                     <div>
                         <label>Stock</label>
@@ -95,19 +104,39 @@ export default function Form(){
                          {errors.stock && <span>{errors.stock.message}</span>}
                     </div>
                     <div>
-                        <label>Diet</label>
-                        <input type="text" onInput={(e) => e.target.value = e.target.value.replace(/\s/g, '')} {...register('diet',{
-                            required:{
-                                value:true,
-                                message: 'required'
-                            },
-                            pattern:{
-                                value:/^[^\d]*$/,
-                                message:'the field not accepts numbers'
-                            }
-                        })}></input>  
-                         {errors.diet && <span>{errors.diet.message}</span>}
-                    </div>
+  <label>Diet</label>
+  <select placeholder='Unspecified' {...register('diet', {
+    required: {
+      value: true,
+      message: 'Please select a diet'
+    }
+  })} defaultValue="Unspecified">
+    <option value="vegan">Vegan</option>
+    <option value="vegetarian">Vegetarian</option>
+    <option value="keto">Keto</option>
+    <option value="paleolithic">Paleolithic</option>
+    <option value="Unspecified">Unspecified</option>
+  </select>
+  {errors.diet && <span>{errors.diet.message}</span>}
+</div>
+<div>
+  <label>Flavor</label>
+  <select placeholder='Unspecified' {...register('flavor', {
+    required: {
+      value: true,
+      message: 'Please select a flavor'
+    }
+  })} defaultValue="Unspecified">
+    <option value="vainilla">Vainilla</option>
+    <option value="chocolate">Chocolate</option>
+    <option value="Frutal">Frutal</option>
+    <option value="sin sabor">Sin Sabor</option>
+    <option value="Unspecified">Unspecified</option>
+  </select>
+  {errors.flavor && <span>{errors.flavor.message}</span>}
+</div>
+
+
                     
                     <div>
                         <label>Weight</label> 
@@ -130,19 +159,19 @@ export default function Form(){
                          {errors.value && <span>{errors.value.message}</span>}
                     </div>
                     <div>
-                        <label>Type</label>
-                        <input type="text" onInput={(e) => e.target.value = e.target.value.replace(/\s/g, '')} {...register('type',{
-                             required:{
-                                value:true,
-                                message: 'required'
-                            },
-                            pattern:{
-                                value:/^[^\d]*$/,
-                                message:'the field not accepts numbers'
-                            }
-                        })}></input>
-                         {errors.type && <span>{errors.type.message}</span>}
-                    </div>
+  <label>Type</label>
+  <select {...register('type', {
+    required: {
+      value: true,
+      message: 'Please select a type'
+    }
+  })} defaultValue="gr">
+    <option value="gr">gr</option>
+    <option value="ml">ml</option>
+    <option value="kg">kg</option>
+  </select>
+  {errors.type && <span>{errors.type.message}</span>}
+</div>
                     </div>     
           <button type='submit' >
             Add Product
