@@ -50,12 +50,14 @@ export const getProductFiltered = (
   category,
   weigthType,
   weigthMin,
-  weigthMax
+  weigthMax,
+  limit,
+  page,
 ) => {
   return (dispatch) => {
     axios
       .get(
-        `http://localhost:3001/products/?diet=${diet}&category=${category}&weigthType=${weigthType}&weigthMin=${weigthMin}&weightMax=${weigthMax}`
+        `http://localhost:3001/products/?limit=${limit}&page=${page}diet=${diet}&category=${category}&weigthType=${weigthType}&weigthMin=${weigthMin}&weightMax=${weigthMax}`
       )
       .then((res) => {
         dispatch(getProductsByFilter(res.data));
