@@ -5,6 +5,7 @@ import {
   getProductByName,
   getProductById,
   getProductsByFilter,
+  addProduct, 
 } from "./productSlice.js";
 
 export const getProducts = () => {
@@ -52,6 +53,18 @@ export const getProductFiltered = (query) => {
         dispatch(getProductsByFilter(res.data.products));
 
         console.log(res.data.products);
+      })
+      .catch((e) => console.log(e));
+  };
+};
+
+export const postProduct = (product) => {
+  return (dispatch) => {
+    axios
+      .post(`${urlDeploy}/products/add`,product)
+      .then((res) => {
+        dispatch(addProduct(product));
+        console.log(res.data);
       })
       .catch((e) => console.log(e));
   };

@@ -19,6 +19,9 @@ export const productSlice = createSlice({
     getProductsByFilter: (state, action) => {
       state.products = [...action.payload];
     },
+    addProduct: (state, action) => {
+      state.products.push(action.payload);
+    },
   },
 });
 
@@ -27,6 +30,7 @@ export const {
   getProductByName,
   getProductById,
   getProductsByFilter,
+  addProduct,
 } = productSlice.actions;
 
 const productsReducer = productSlice.reducer;
