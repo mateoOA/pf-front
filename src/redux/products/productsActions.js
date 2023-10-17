@@ -1,11 +1,11 @@
 import axios from "axios";
-
 import {
   getAllProducts,
   getProductByName,
   getProductById,
   getProductsByFilter,
-  addProduct, 
+  addProduct,
+  setTotalPages,
 } from "./productSlice.js";
 
 export const getProducts = () => {
@@ -13,7 +13,9 @@ export const getProducts = () => {
     axios
       .get("http://localhost:3001/products/")
       .then((res) => {
-        dispatch(getAllProducts(res.data.products));
+        const { products, totalPages } = res.data;
+        dispatch(getAllProducts(products));
+        dispatch(setTotalPages(totalPages));
         console.log(res.data);
       })
       .catch((e) => console.log(e));

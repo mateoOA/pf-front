@@ -1,26 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = {
-  products: [],
-  detail: [],
-};
-export const productSlice = createSlice({
+
+const productSlice = createSlice({
   name: "products",
-  initialState: initialState,
+  initialState: {
+    products: [],
+    detail: [],
+    currentPage: 1,
+    totalPages: 5,
+  },
   reducers: {
-    getAllProducts: (state = initialState, action) => {
-      state.products = [...state.products, ...action.payload];
+    getAllProducts: (state, action) => {
+      state.products = action.payload;
     },
     getProductByName: (state, action) => {
-      state.products = [...action.payload];
+      state.products = action.payload;
     },
-    getProductById: (state = initialState, action) => {
-      state.detail = [...action.payload];
+    getProductById: (state, action) => {
+      state.detail = action.payload;
     },
     getProductsByFilter: (state, action) => {
-      state.products = [...action.payload];
+      state.products = action.payload;
     },
     addProduct: (state, action) => {
       state.products.push(action.payload);
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+    setTotalPages: (state, action) => {
+      state.totalPages = action.payload;
     },
   },
 });
@@ -31,6 +39,8 @@ export const {
   getProductById,
   getProductsByFilter,
   addProduct,
+  setCurrentPage,
+  setTotalPages,
 } = productSlice.actions;
 
 const productsReducer = productSlice.reducer;

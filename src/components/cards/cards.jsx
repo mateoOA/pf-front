@@ -1,31 +1,40 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "../card/card";
-import { useDispatch } from "react-redux";
-import { getProducts } from "../../redux/products/productsActions";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-export function Cards() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../redux/products/productsActions"; // Importa tus acciones
+import { setCurrentPage } from "../../redux/products/productSlice"; // Importa la acción setCurrentPage
 
-  const { products } = useSelector((state) => state.products);
-  
-  // Define el estado del paginado
-  const [currentPage, setCurrentPage] = useState(1);
+export function Cards() {
+  const { products, currentPage, totalPages } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
   const itemsPerPage = 10;
-  
-  // Calcula el índice de inicio y final para los elementos de la página actual
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  
-  // Filtra los productos para mostrar solo los de la página actual
   const productsToShow = products.slice(startIndex, endIndex);
+
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const prevHandler = () => {
+    if (currentPage > 1) {
+      dispatch(setCurrentPage(currentPage - 1));
+    }
+  };
+
+  const nextHandler = () => {
+    if (currentPage < totalPages) {
+      dispatch(setCurrentPage(currentPage + 1));
+    }
+  };
+
+  useEffect(() => {
+    // Llama a la acción getProducts al montar el componente
+    dispatch(getProducts());
+  }, [dispatch]);
 
   return (
     <div>
-      {productsToShow.map((product) => ( 
+      {productsToShow.map((product) => (
         <Card
           key={product._id}
           id={product._id}
@@ -36,21 +45,30 @@ export function Cards() {
         />
       ))}
       
-      {/* Agrega los controles de paginación */}
-      <div className="pagination">
-        <button
-          onClick={() => setCurrentPage(currentPage - 1)}
+      <div>
+        <input
+          type="button"
+          value="Prev"
+          name="Prev"
+          onClick={prevHandler}
           disabled={currentPage === 1}
-        >
-          Anterior
-        </button>
-        <span>Página {currentPage}</span>
-        <button
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={endIndex >= products.length}
-        >
-          Siguiente
-        </button>
+        />
+        {pageNumbers.map((page) => (
+          <button
+            key={page}
+            onClick={() => dispatch(setCurrentPage(page))}
+            className={page === currentPage ? "active" : ""}
+          >
+            {page}
+          </button>
+        ))}
+        <input
+          type="button"
+          value="Next"
+          name="Next"
+          onClick={nextHandler}
+          disabled={currentPage === totalPages}
+        />
       </div>
     </div>
   );
