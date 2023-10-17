@@ -1,76 +1,112 @@
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../redux/products/productsActions";
+import { getProductFiltered } from "../../redux/products/productsActions";
+import React, { useState, useEffect } from "react";
+
 export default function Filtered() {
   const dispatch = useDispatch();
 
-  const handleAoZ = (event) => {
-    dispatch(getProducts(event.target.value));
-  };
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setQuery((prevQuery) => {
+  //     return `${prevQuery}&${[name]}=${value}`
+  //   });
+  // };
 
-  const handleOrderPrice = (event) => {
-    dispatch(getProducts(event.target.value));
-  };
+  // const handleReset = () => {
+  //   setQuery(""); // Restablecer el estado query
+  // };
 
-  const handleFilterDiet = (event) => {
-    dispatch(getProducts(event.target.value));
-  };
+  const [filters, setFilters] = useState({
+    title: "",
+    price: "",
+    category: "",
+    diet: "",
+    weightType: "",
+    weightMin: "",
+    weightMax: "",
+  });
 
-  const handleFilterCategory = (event) => {
-    dispatch(getProducts(event.target.value));
-  };
-  const handleWeightType = (event) => {
-    dispatch(getProducts(event.target.value));
-  };
-  const handleWeightMax = (event) => {
-    dispatch(getProducts(event.target.value));
-  };
-  const handleWeightMin = (event) => {
-    dispatch(getProducts(event.target.value));
+  useEffect(() => {
+    console.log(applyFilters(filters), 'query' );
+    dispatch(getProductFiltered(applyFilters(filters)));
+  }, [filters, dispatch]);
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
   };
 
   const handleReset = () => {
-    dispatch(reset());
+    setFilters({
+      orderBy: "",
+      category: "",
+      diet: "",
+      weightType: "",
+      weightMin: "",
+      weightMax: "",
+
+    });
+  };
+
+  const applyFilters = () => {
+    const query = Object.entries(filters)
+      .map(([key, value]) => {
+        if (value) {
+          return `${key}=${value}`;
+        }
+        return "";
+      })
+      .filter(Boolean)
+      .join("&");
+      return query;
   };
 
   return (
     <div>
       <div>
         <h3>Alphabetic</h3>
-        <select name="A_Z" onChange={handleAoZ} defaultValue="Default">
+        <select name="orderBy" onChange={handleChange} defaultValue="Default">
           <option value="Default">Select Order</option>
-          <option value="A">A - Z</option>
-          <option value="Z">Z - A</option>
+          <option value="title">A - Z</option>
+          <option value="-title">Z - A</option>
         </select>
       </div>
 
       <div>
         <h3>Price</h3>
-        <select name="Price" onChange={handleOrderPrice} defaultValue="Default">
+        <select name="orderBy" onChange={handleChange} defaultValue="Default">
           <option value="Default">Select Price</option>
-          <option value="maximum">Maximum</option>
-          <option value="minimum">Minimum</option>
+          <option value="-price">Maximum</option>
+          <option value="price">Minimum</option>
         </select>
       </div>
 
       <div>
         <h3>Category</h3>
         <select
-          name="Category"
-          onChange={handleFilterCategory}
+          name="category"
+          onChange={handleChange}
           defaultValue="Default"
         >
           <option value="Default">Select Category</option>
-          <option value="Food">Food</option>
-          <option value="Beverages">Beverages</option>
+          <option value="food">Food</option>
+          <option value="suplements">suplements</option>
+          <option value="beverages">beverages</option>
+          <option value="vitamins and minerals">vitamins and minerals</option>
         </select>
       </div>
 
       <div>
         <h3>Diet</h3>
-        <select name="Diet" onChange={handleFilterDiet} defaultValue="Default">
+        <select name="diet" onChange={handleChange} defaultValue="Default">
           <option value="Default">Select Diet</option>
           <option value="vegetarian">Vegetarian</option>
           <option value="vegan">Vegan</option>
+          <option value="unespecified">unespecified</option>
         </select>
       </div>
 
@@ -78,10 +114,10 @@ export default function Filtered() {
         <h3>weightType</h3>
         <select
           name="weightType"
-          onChange={handleWeightType}
+          onChange={handleChange}
           defaultValue="Default"
         >
-          <option value="Default">Select Category</option>
+          <option value="Default">Select a Weight Type</option>
           <option value="l">l</option>
           <option value="ml">ml</option>
           <option value="g">g</option>
@@ -93,14 +129,14 @@ export default function Filtered() {
         <h3>min-max size</h3>
         <input
           name="weightMin"
-          onChange={handleWeightMin}
+          onChange={handleChange}
           id="weightMix"
           type="number"
           placeholder="Minimum"
         />
         <input
           name="weightMax"
-          onChange={handleWeightMax}
+          onChange={handleChange}
           id="weightMax"
           type="number"
           placeholder="maximum"

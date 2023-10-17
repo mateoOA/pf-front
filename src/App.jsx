@@ -22,6 +22,7 @@ function App() {
                 <Route path="/aboutus" element={<Us/>}/>
                 <Route path="/myaccount" element={<Profile/>}/>
                 <Route path="/cart" element={<Cart/>}/>
+                <Route path="*" element={<Error/>}/>
             </Routes>
 
     </>

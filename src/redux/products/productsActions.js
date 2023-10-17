@@ -7,22 +7,22 @@ import {
   getProductsByFilter,
 } from "./productSlice.js";
 
-// export const getProducts = () => {
-//   return (dispatch) => {
-//     axios
-//       .get("https://pf-ab.onrender.com/products/")
-//       .then((res) => {
-//         dispatch(getAllProducts(res.data.products));
-//         console.log(res.data);
-//       })
-//       .catch((e) => console.log(e));
-//   };
-// };
+export const getProducts = () => {
+  return (dispatch) => {
+    axios
+      .get("http://localhost:3001/products/")
+      .then((res) => {
+        dispatch(getAllProducts(res.data.products));
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
+  };
+};
 
 export const getProductName = (name) => {
   return (dispatch) => {
     axios
-      .get(`https://pf-ab.onrender.com/products/name?name=/${name}`)
+      .get(`http://localhost:3001/products/name?name=${name}`)
       .then((res) => {
         dispatch(getProductByName(res.data));
         console.log(res.data);
@@ -34,7 +34,7 @@ export const getProductName = (name) => {
 export const getProductId = (id) => {
   return (dispatch) => {
     axios
-      .get(`https://pf-ab.onrender.com/products/${id}`)
+      .get(`http://localhost:3001/products/${id}`)
       .then((res) => {
         dispatch(getProductById(res.data));
         console.log(res.data);
@@ -43,24 +43,15 @@ export const getProductId = (id) => {
   };
 };
 
-export const getProducts = (
-  diet,
-  category,
-  weigthType,
-  weigthMin,
-  weigthMax,
-  limit = 10,
-  page = 1
-) => {
+export const getProductFiltered = (query) => {
   return (dispatch) => {
+    console.log(query);
     axios
-      .get(
-        `https://pf-ab.onrender.com/products/?`
-      )
+      .get(`https://pf-ab.onrender.com/products?${query}`)
       .then((res) => {
-        console.log(res.data);
         dispatch(getProductsByFilter(res.data.products));
-        
+
+        console.log(res.data.products);
       })
       .catch((e) => console.log(e));
   };
