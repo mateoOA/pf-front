@@ -1,18 +1,20 @@
 import axios from "axios";
-
 import {
   getAllProducts,
   getProductByName,
   getProductById,
   getProductsByFilter,
+  addProduct,
+  //setTotalPages,
 } from "./productSlice.js";
 
-export const getProducts = () => {
+export const getProducts = (page) => {
   return (dispatch) => {
     axios
-      .get("http://localhost:3001/products/")
+      .get(`https://pf-ab.onrender.com/products/?page=${page}`)
       .then((res) => {
-        dispatch(getAllProducts(res.data.products));
+        dispatch(getAllProducts(res.data));
+
         console.log(res.data);
       })
       .catch((e) => console.log(e));
@@ -22,7 +24,7 @@ export const getProducts = () => {
 export const getProductName = (name) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3001/products/name?name=${name}`)
+      .get(`https://pf-ab.onrender.com/products/name?name=${name}`)
       .then((res) => {
         dispatch(getProductByName(res.data));
         console.log(res.data);
@@ -43,22 +45,26 @@ export const getProductId = (id) => {
   };
 };
 
-export const getProductFiltered = (
-  diet,
-  category,
-  weigthType,
-  weigthMin,
-  weigthMax,
-  limit,
-  page
-) => {
+export const getProductFiltered = (query) => {
   return (dispatch) => {
+    console.log(query);
     axios
-      .get(
-        `http://localhost:3001/products/?diet=${diet}&category=${category}&weigthType=${weigthType}&weigthMin=${weigthMin}&weightMax=${weigthMax}&limit=${limit}&page=${page}`
-      )
+      .get(`https://pf-ab.onrender.com/products?${query}`)
       .then((res) => {
         dispatch(getProductsByFilter(res.data));
+
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
+  };
+};
+
+export const postProduct = (product) => {
+  return (dispatch) => {
+    axios
+      .post(`${urlDeploy}/products/add`, product)
+      .then((res) => {
+        dispatch(addProduct(product));
         console.log(res.data);
       })
       .catch((e) => console.log(e));

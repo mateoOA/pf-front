@@ -1,18 +1,37 @@
+import React, { useState, useEffect } from "react";
 import { Card } from "../card/card";
-import { useDispatch } from "react-redux";
-import { getProducts } from "../../redux/products/productsActions";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../redux/products/productsActions"; // Importa tus acciones
+import { setCurrentPage } from "../../redux/products/productSlice"; // Importa la acción setCurrentPage
 
 export function Cards() {
+  const { products, currentPage, totalPages } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
+
+  let elements = [];
+
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
-  const { products } = useSelector((state) => state.products);
+  }, [dispatch]);
+
+  {
+    for (let i = 0; i < Number(totalPages); i++) {
+      elements.push(
+        <button
+          key={i}
+          onClick={() => dispatch(getProducts(i + 1))}
+          className={i + 1 === currentPage ? "active" : ""}
+        >
+          {i + 1}
+        </button>
+      );
+    }
+  }
 
   return (
-    <div >
+    <div>
       {products.map((product) => (
         <Card
           key={product._id}
@@ -23,6 +42,30 @@ export function Cards() {
           price={product.price}
         />
       ))}
+
+      <div>
+        <input
+          type="button"
+          value="Prev"
+          name="Prev"
+          onClick={() => {
+            dispatch(getProducts(currentPage - 1));
+          }}
+          disabled={currentPage === 1}
+        />
+
+        {elements}
+
+        <input
+          type="button"
+          value="Next"
+          name="Next"
+          onClick={() => {
+            dispatch(getProducts(currentPage + 1));
+          }}
+          disabled={currentPage === totalPages}
+        />
+      </div>
     </div>
   );
 }
