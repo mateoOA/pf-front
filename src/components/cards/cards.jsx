@@ -32,7 +32,7 @@ export function Cards() {
 
   return (
     <div>
-    <div className="flex flex-row flex-wrap w-[1500px] mx-auto ml-auto" >
+    <div className="flex flex-row flex-wrap w-[1600px] mx-auto gap-6" >
       {products.map((product) => (
         <Card
           key={product._id}
