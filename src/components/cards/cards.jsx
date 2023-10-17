@@ -5,36 +5,35 @@ import { getProducts } from "../../redux/products/productsActions"; // Importa t
 import { setCurrentPage } from "../../redux/products/productSlice"; // Importa la acción setCurrentPage
 
 export function Cards() {
-  const { products, currentPage, totalPages } = useSelector((state) => state.products);
+  const { products, currentPage, totalPages } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
 
-  const itemsPerPage = 10;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const productsToShow = products.slice(startIndex, endIndex);
-
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-
-  const prevHandler = () => {
-    if (currentPage > 1) {
-      dispatch(setCurrentPage(currentPage - 1));
-    }
-  };
-
-  const nextHandler = () => {
-    if (currentPage < totalPages) {
-      dispatch(setCurrentPage(currentPage + 1));
-    }
-  };
+  let elements = [];
 
   useEffect(() => {
-    // Llama a la acción getProducts al montar el componente
     dispatch(getProducts());
   }, [dispatch]);
 
+  {
+    for (let i = 0; i < Number(totalPages); i++) {
+      elements.push(
+        <button
+          key={i}
+          onClick={() => dispatch(getProducts(i + 1))}
+          className={i + 1 === currentPage ? "active" : ""}
+        >
+          {i + 1}
+        </button>
+      );
+    }
+  }
+
   return (
     <div>
-      {productsToShow.map((product) => (
+    <div className="flex flex-row flex-wrap w-[1500px] mx-auto ml-auto" >
+      {products.map((product) => (
         <Card
           key={product._id}
           id={product._id}
@@ -44,29 +43,27 @@ export function Cards() {
           price={product.price}
         />
       ))}
-      
-      <div>
+    </div>
+      <div className="mt-[200px]">
         <input
           type="button"
           value="Prev"
           name="Prev"
-          onClick={prevHandler}
+          onClick={() => {
+            dispatch(getProducts(currentPage - 1));
+          }}
           disabled={currentPage === 1}
         />
-        {pageNumbers.map((page) => (
-          <button
-            key={page}
-            onClick={() => dispatch(setCurrentPage(page))}
-            className={page === currentPage ? "active" : ""}
-          >
-            {page}
-          </button>
-        ))}
+
+        {elements}
+
         <input
           type="button"
           value="Next"
           name="Next"
-          onClick={nextHandler}
+          onClick={() => {
+            dispatch(getProducts(currentPage + 1));
+          }}
           disabled={currentPage === totalPages}
         />
       </div>

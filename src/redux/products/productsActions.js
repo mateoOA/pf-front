@@ -5,17 +5,16 @@ import {
   getProductById,
   getProductsByFilter,
   addProduct,
-  setTotalPages,
+  //setTotalPages,
 } from "./productSlice.js";
 
-export const getProducts = () => {
+export const getProducts = (page) => {
   return (dispatch) => {
     axios
-      .get("http://localhost:3001/products/")
+      .get(`https://pf-ab.onrender.com/products/?page=${page}`)
       .then((res) => {
-        const { products, totalPages } = res.data;
-        dispatch(getAllProducts(products));
-        dispatch(setTotalPages(totalPages));
+        dispatch(getAllProducts(res.data));
+
         console.log(res.data);
       })
       .catch((e) => console.log(e));
@@ -25,7 +24,7 @@ export const getProducts = () => {
 export const getProductName = (name) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3001/products/name?name=${name}`)
+      .get(`https://pf-ab.onrender.com/products/name?name=${name}`)
       .then((res) => {
         dispatch(getProductByName(res.data));
         console.log(res.data);
@@ -52,9 +51,9 @@ export const getProductFiltered = (query) => {
     axios
       .get(`https://pf-ab.onrender.com/products?${query}`)
       .then((res) => {
-        dispatch(getProductsByFilter(res.data.products));
+        dispatch(getProductsByFilter(res.data));
 
-        console.log(res.data.products);
+        console.log(res.data);
       })
       .catch((e) => console.log(e));
   };
@@ -63,7 +62,7 @@ export const getProductFiltered = (query) => {
 export const postProduct = (product) => {
   return (dispatch) => {
     axios
-      .post(`${urlDeploy}/products/add`,product)
+      .post(`${urlDeploy}/products/add`, product)
       .then((res) => {
         dispatch(addProduct(product));
         console.log(res.data);

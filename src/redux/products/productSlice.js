@@ -5,12 +5,17 @@ const productSlice = createSlice({
   initialState: {
     products: [],
     detail: [],
-    currentPage: 1,
-    totalPages: 5,
+    currentPage: "",
+    totalPages: "",
+    totalResults: "",
   },
   reducers: {
     getAllProducts: (state, action) => {
-      state.products = action.payload;
+      console.log(action.payload);
+      state.totalPages = action.payload.totalPages;
+      state.products = action.payload.products;
+      state.currentPage = action.payload.currentPage;
+      state.totalResults = action.payload.totalResults;
     },
     getProductByName: (state, action) => {
       state.products = action.payload;
@@ -19,7 +24,10 @@ const productSlice = createSlice({
       state.detail = action.payload;
     },
     getProductsByFilter: (state, action) => {
-      state.products = action.payload;
+      state.totalPages = action.payload.totalPages;
+      state.products = action.payload.products;
+      state.currentPage = action.payload.currentPage;
+      state.totalResults = action.payload.totalResults;
     },
     addProduct: (state, action) => {
       state.products.push(action.payload);
